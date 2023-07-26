@@ -5,9 +5,10 @@ services:
     build: .
     ports:
       - "3000:3000"
+ 
   nginx:
     build:
-      dockerfile: nginx.dockerfile
+      dockerfile: ./nginx.dockerfile
     ports:
       - "80:80"
     depends_on:
