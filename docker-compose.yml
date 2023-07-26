@@ -7,7 +7,8 @@ services:
       dockerfile: Dockerfile.express
     ports:
       - "3000:3000"
- 
+    networks:
+      - my_network
   nginx:
     build:
       context: .
@@ -16,4 +17,9 @@ services:
       - "80:80"
     depends_on:
       - express-app
+    networks:
+      - my_network
   
+networks:
+  my_network:
+    driver: bridge
