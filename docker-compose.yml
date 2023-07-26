@@ -17,6 +17,8 @@ services:
       - "80:80"
     depends_on:
       - express-app
+    links:
+      - express-app
     networks:
       - my_network
   
