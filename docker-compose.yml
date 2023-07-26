@@ -1,0 +1,20 @@
+x-common-variables: &common-variables
+  MYSQL_PASSWORD : 123456
+  MYSQL_DATABASE : hoidanit
+
+services:
+  express-app:
+    build: .
+    environment:
+      <<: *common-variables
+      MYSQL_HOST_IP: db
+    ports:
+      - "3000:3000"
+  nginx:
+    build:
+      dockerfile: nginx.dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - express-app
+  
